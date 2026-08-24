@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import { About } from './components/About'
-import { AppointmentModal } from './components/AppointmentModal'
+import { BookAppointment } from './components/BookAppointment'
 import { Doctors } from './components/Doctors'
 import { Footer } from './components/Footer'
 import { Header } from './components/Header'
@@ -12,14 +12,17 @@ import type { Page } from './types'
 
 function App() {
   const [page, setPage] = useState<Page>('home')
-  const [booking, setBooking] = useState<{ open: boolean; department?: string }>({ open: false })
+  const [bookingDepartment, setBookingDepartment] = useState<string | undefined>()
 
   const navigate = (nextPage: Page) => {
     setPage(nextPage)
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  const openBooking = (department?: string) => setBooking({ open: true, department })
+  const openBooking = (department?: string) => {
+    setBookingDepartment(department)
+    navigate('book')
+  }
 
   return (
     <div className="app-shell">
@@ -29,8 +32,8 @@ function App() {
       {page === 'doctors' && <Doctors onBook={openBooking} />}
       {page === 'women-child' && <WomenChild onBook={() => openBooking()} />}
       {page === 'about' && <About onBook={() => openBooking()} />}
+      {page === 'book' && <BookAppointment initialDepartment={bookingDepartment} />}
       <Footer onNavigate={navigate} />
-      {booking.open && <AppointmentModal initialDepartment={booking.department} onClose={() => setBooking({ open: false })} />}
     </div>
   )
 }

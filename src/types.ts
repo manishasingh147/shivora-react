@@ -1,4 +1,4 @@
-export type Page = 'home' | 'services' | 'doctors' | 'women-child' | 'about'
+export type Page = 'home' | 'services' | 'doctors' | 'women-child' | 'about' | 'book'
 
 export type Appointment = {
   name: string
