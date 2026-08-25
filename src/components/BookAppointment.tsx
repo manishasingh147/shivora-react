@@ -173,7 +173,7 @@ export function BookAppointment({ initialDepartment }: BookAppointmentProps) {
               </button>
             )
           })}
-          <p className="book-doctors-note">Can't find a suitable time? Call <a href="tel:+919302086010">+91 93020 86010</a> and our front desk will fit you in.</p>
+          <p className="book-doctors-note">Can't find a suitable time? Call <a href="tel:+919508992318">+91 95089 92318</a> and our front desk will fit you in.</p>
         </div>
 
         <div className="book-slots">

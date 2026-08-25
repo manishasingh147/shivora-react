@@ -17,7 +17,7 @@ const menuItems: { id: Page; label: string }[] = [
 export function Header({ page, onNavigate, onBook }: HeaderProps) {
   return (
     <header className="site-header">
-      <div className="notice">OPD hours: Monday to Saturday, 9am to 8pm <span>·</span> <a href="tel:+919302086010">+91 93020 86010</a></div>
+      <div className="notice">OPD hours: Monday to Saturday, 9am to 8pm <span>·</span> <a href="tel:+919508992318">+91 95089 92318</a></div>
       <div className="nav-wrap">
         <button className="brand" onClick={() => onNavigate('home')} aria-label="Go to Shivora home">
           <img className="brand-mark" src="/images/408458c6-00b7-46a2-8c9b-7bcfd99c505e.png" alt="" />
