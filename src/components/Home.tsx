@@ -1,6 +1,6 @@
-type HomeProps = { onBook: () => void; onNavigate: (page: 'services' | 'women-child') => void }
+type HomeProps = { onNavigate: (page: 'services' | 'women-child') => void }
 
-export function Home({ onBook, onNavigate }: HomeProps) {
+export function Home({ onNavigate }: HomeProps) {
   return (
     <main>
       <section className="hero page-section">
@@ -8,7 +8,7 @@ export function Home({ onBook, onNavigate }: HomeProps) {
           <p className="eyebrow">Comprehensive healthcare for women and child</p>
           <h1>Jharkhand's most complete polyclinic for women and child care.</h1>
           <p className="lede">Led by <b>Dr. Apeksha Sahu</b>, one of the region's most respected gynaecologists, Shivora sets a new standard in women's and children's healthcare in Ranchi, backed by senior specialists and our own lab, ultrasound and pharmacy under one roof.</p>
-          <div className="actions"><button className="button" onClick={onBook}>Book an appointment</button><button className="text-button" onClick={() => onNavigate('women-child')}>Explore women & child care <span>↗</span></button></div>
+          <div className="actions"><button className="text-button" onClick={() => onNavigate('women-child')}>Explore women & child care <span>↗</span></button></div>
         </div>
         <div className="hero-art reveal delay-one"><img src="/images/78c91ade-8069-49c8-a4f3-88ad70d354f8.webp" alt="Shivora Healthcare reception" /><span className="art-note">Care that knows you</span></div>
       </section>

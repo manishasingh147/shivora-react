@@ -3,7 +3,6 @@ import type { Page } from '../types'
 type HeaderProps = {
   page: Page
   onNavigate: (page: Page) => void
-  onBook: () => void
 }
 
 const menuItems: { id: Page; label: string }[] = [
@@ -14,7 +13,7 @@ const menuItems: { id: Page; label: string }[] = [
   { id: 'about', label: 'About Us' },
 ]
 
-export function Header({ page, onNavigate, onBook }: HeaderProps) {
+export function Header({ page, onNavigate }: HeaderProps) {
   return (
     <header className="site-header">
       <div className="notice">OPD hours: Monday to Saturday, 9am to 8pm <span>·</span> <a href="tel:+919508992318">+91 95089 92318</a></div>
@@ -30,7 +29,6 @@ export function Header({ page, onNavigate, onBook }: HeaderProps) {
             </button>
           ))}
         </nav>
-        <button className="button button-small" onClick={onBook}>Book appointment</button>
       </div>
     </header>
   )
