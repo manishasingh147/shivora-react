@@ -1,6 +1,5 @@
-import type { Page } from '../types'
-
-type FooterProps = { onNavigate: (page: Page) => void }
+import { Link } from 'react-router'
+import { pagePaths, type Page } from '../types'
 
 const menu: { id: Page; label: string }[] = [
   { id: 'home', label: 'Home' },
@@ -12,7 +11,7 @@ const menu: { id: Page; label: string }[] = [
 
 const services = ['Shivora OPD', 'Shivora Lab', 'Shivora Scan', 'Shivora Pharma']
 
-export function Footer({ onNavigate }: FooterProps) {
+export function Footer() {
   return (
     <footer className="ft">
       <div className="ft-grid">
@@ -27,7 +26,7 @@ export function Footer({ onNavigate }: FooterProps) {
         <div>
           <div className="ft-label">MENU</div>
           <div className="ft-list">
-            {menu.map((m) => <button key={m.id} onClick={() => onNavigate(m.id)}>{m.label}</button>)}
+            {menu.map((m) => <Link key={m.id} to={pagePaths[m.id]}>{m.label}</Link>)}
           </div>
         </div>
         <div>

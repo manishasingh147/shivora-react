@@ -1,6 +1,5 @@
-import type { Page } from '../types'
-
-type HomeProps = { onNavigate: (page: Page) => void }
+import { useNavigate } from 'react-router'
+import { pagePaths, type Page } from '../types'
 
 const BOOKING_TEL = 'tel:+919508992318'
 
@@ -23,7 +22,10 @@ const doctorTeasers = [
   { name: 'Dr. Rishi Raj', role: 'Orthopaedic Surgeon', summary: 'A gold medalist and former Senior Resident at AIIMS New Delhi. He brings tertiary-care orthopaedic training to joint, trauma and sports medicine cases.' },
 ]
 
-export function Home({ onNavigate }: HomeProps) {
+export function Home() {
+  const navigate = useNavigate()
+  const onNavigate = (page: Page) => navigate(pagePaths[page])
+
   return (
     <main className="home">
       {/* hero */}

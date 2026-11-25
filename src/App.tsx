@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useEffect } from 'react'
+import { Navigate, Route, Routes, useLocation } from 'react-router'
 import './App.css'
 import { About } from './components/About'
 import { Doctors } from './components/Doctors'
@@ -7,25 +8,36 @@ import { Header } from './components/Header'
 import { Home } from './components/Home'
 import { Services } from './components/Services'
 import { WomenChild } from './components/WomenChild'
-import type { Page } from './types'
+import { pagePaths } from './types'
+
+function ScrollToTop() {
+  const { pathname, hash } = useLocation()
+
+  useEffect(() => {
+    if (hash) {
+      document.getElementById(hash.slice(1))?.scrollIntoView({ behavior: 'smooth' })
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }, [pathname, hash])
+
+  return null
+}
 
 function App() {
-  const [page, setPage] = useState<Page>('home')
-
-  const navigate = (nextPage: Page) => {
-    setPage(nextPage)
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
-
   return (
     <div className="app-shell">
-      <Header page={page} onNavigate={navigate} />
-      {page === 'home' && <Home onNavigate={navigate} />}
-      {page === 'services' && <Services />}
-      {page === 'doctors' && <Doctors />}
-      {page === 'women-child' && <WomenChild />}
-      {page === 'about' && <About />}
-      <Footer onNavigate={navigate} />
+      <ScrollToTop />
+      <Header />
+      <Routes>
+        <Route path={pagePaths.home} element={<Home />} />
+        <Route path={pagePaths.services} element={<Services />} />
+        <Route path={pagePaths.doctors} element={<Doctors />} />
+        <Route path={pagePaths['women-child']} element={<WomenChild />} />
+        <Route path={pagePaths.about} element={<About />} />
+        <Route path="*" element={<Navigate to={pagePaths.home} replace />} />
+      </Routes>
+      <Footer />
     </div>
   )
 }
